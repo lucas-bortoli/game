@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "ESNext"
+        ],
+        "strict": true,
+        "outDir": "dist",
+        "rootDir": "src",
+        "types": [
+            "love-typescript-definitions",
+            "lua-types/jit"
+        ]
+    },
+    "tstl": {
+        "luaTarget": "JIT"
+    }
+}
