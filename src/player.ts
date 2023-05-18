@@ -1,16 +1,16 @@
-import { Point } from "./utils/Point";
+import { Point } from "./utils/Geometry";
 import { fromRgb } from "./utils/Color";
 
 export class Player {
-  public pos: Point;
+	public pos: Point;
 
-  constructor() {
-    this.pos = new Point(16, 24);
-  }
+	constructor() {
+		this.pos = new Point(16, 24);
+	}
 
-  public draw() {
-    love.graphics.setColor(...fromRgb(255, 0, 0));
+	public draw() {
+		love.graphics.setColor(...fromRgb(255, 0, 0));
 
-    love.graphics.rectangle("fill", this.pos.x, this.pos.y, 16, 16);
-  }
+		love.graphics.rectangle("fill", this.pos.x, this.pos.y, 16, 16);
+	}
 }

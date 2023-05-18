@@ -1,10 +1,10 @@
 {
-    "useTabs": false,
-    "arrowParens": "avoid",
-    "printWidth": 100,
-    "proseWrap": "always",
-    "endOfLine": "lf",
-    "tabWidth": 2,
-    "semi": true,
-    "singleQuote": false
+	"useTabs": true,
+	"arrowParens": "avoid",
+	"printWidth": 100,
+	"proseWrap": "always",
+	"endOfLine": "lf",
+	"tabWidth": 4,
+	"semi": true,
+	"singleQuote": false
 }
