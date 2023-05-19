@@ -1,11 +1,13 @@
 import { fromRgb } from "./utils/Color";
 import { World } from "./world";
 import { Assets } from "./assets";
+import { Editor } from "./editor";
+import { IGameState } from "./IGameState";
 
 // configurar valores globais
-GAME_WIDTH = 160;
-GAME_HEIGHT = 90;
-GAME_SCALE = 7;
+GAME_WIDTH = 320;
+GAME_HEIGHT = 180;
+GAME_SCALE = Assets.Filter.getHeight();
 RENDER_CANVAS = love.graphics.newCanvas(GAME_WIDTH, GAME_HEIGHT);
 
 const FILTER_CANVAS = love.graphics.newCanvas(GAME_WIDTH * GAME_SCALE, GAME_HEIGHT * GAME_SCALE);
@@ -14,13 +16,13 @@ let filtro_desenhado = false;
 //@ts-ignore
 BLOCK_SIZE = 16;
 
-let world: World;
+let gameState: IGameState;
 
 love.load = () => {
 	love.window.setMode(GAME_WIDTH * GAME_SCALE, GAME_HEIGHT * GAME_SCALE, { resizable: false });
 	love.mouse.setCursor(Assets.UI.Cursor);
 
-	world = new World();
+	gameState = new Editor();
 };
 
 love.draw = () => {
@@ -42,7 +44,7 @@ love.draw = () => {
 	love.graphics.clear();
 
 	// desenhar o mundo atual
-	world.draw();
+	gameState.draw();
 
 	love.graphics.setCanvas();
 
@@ -54,5 +56,5 @@ love.draw = () => {
 
 love.update = (dt: number) => {
 	// atualizar o mundo atual
-	world.update(dt);
+	gameState.update(dt);
 };

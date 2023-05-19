@@ -1,5 +1,8 @@
 import { Point } from "./utils/Geometry";
-import { fromRgb } from "./utils/Color";
+import { WHITE } from "./utils/Color";
+import { Assets } from "./assets";
+
+let i = 1;
 
 export class Player {
 	public pos: Point;
@@ -9,8 +12,11 @@ export class Player {
 	}
 
 	public draw() {
-		love.graphics.setColor(...fromRgb(255, 0, 0));
+		love.graphics.setColor(WHITE);
+		i++;
 
-		love.graphics.rectangle("fill", this.pos.x, this.pos.y, 16, 16);
+		if (i === 12) i = 1;
+
+		love.graphics.draw(Assets.Player.Frames[i], this.pos.x, this.pos.y);
 	}
 }

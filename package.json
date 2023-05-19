@@ -3,7 +3,7 @@
   "author": "Lucas Vinicius de Bortoli Santos",
   "scripts": {
     "build": "bash -c 'rm -r dist; tstl -p tsconfig.json && cp -r src/assets dist/assets'",
-    "start": "love ./dist"
+    "start": "lovec ./dist"
   },
   "devDependencies": {
     "love-typescript-definitions": "^0.24.3",

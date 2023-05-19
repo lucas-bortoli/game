@@ -1,24 +1,17 @@
 import * as Bump from "./lib/bump/bump";
-import { Assets } from "./assets";
-import { fromRgb } from "./utils/Color";
+import { WHITE, fromRgb } from "./utils/Color";
 import { Player } from "./player";
-import { Line } from "./line";
+import { Wall } from "./wall";
+import { Assets } from "./assets";
+import { IGameState } from "./IGameState";
 
-let q = love.graphics.newQuad(
-	0,
-	0,
-	48,
-	4,
-	Assets.Level.Wall.getWidth(),
-	Assets.Level.Wall.getHeight()
-);
-
-export class World {
+export class World implements IGameState {
+	public name: string = "level";
 	private blocks: number[][];
 	private physics: Bump.World;
 	private player: Player;
 
-	public lines: Line[];
+	public walls: Wall[];
 
 	constructor() {
 		this.physics = Bump.newWorld(64);
@@ -28,23 +21,25 @@ export class World {
 			[1, 0, 1],
 			[2, 1, 2],
 		];
-		this.lines = [new Line(10, 10, 96, 4)];
+		this.walls = [new Wall(10, 10, 96, 8)];
 		this.player = new Player();
 	}
 
 	public update(dt: number) {}
 
 	public draw() {
-		love.graphics.setBackgroundColor(...fromRgb(32, 32, 32));
+		love.graphics.setBackgroundColor(...fromRgb(32, 16, 16));
 
 		love.graphics.setColor(...fromRgb(255, 255, 255));
 
-		for (const line of this.lines) {
-			line.draw();
+		for (const wall of this.walls) {
+			wall.draw();
 		}
 
-		love.graphics.draw(Assets.Level.Wall, q, 10, 10);
-
 		this.player.draw();
+
+		love.graphics.setFont(Assets.UI.Font);
+		love.graphics.setColor(...WHITE);
+		love.graphics.print("Hello World", 16, 16);
 	}
 }
